@@ -379,25 +379,32 @@ public:
 
 	int allocation(int stat1, int stat2, int stat3, int stat4, int stat5, int stat6)
 	{
-		//int strength, dexterity, constitution, intelligence, wisdom, charisma;
-		vector<int> arr;
+		int strength, dexterity, constitution, intelligence, wisdom, charisma;
 
-		arr.push_back(stat1);
-		arr.push_back(stat2);
-		arr.push_back(stat3);
-		arr.push_back(stat4);
-		arr.push_back(stat5);
-		arr.push_back(stat6);
-		
+		vector<int> stats;
+		stats.push_back(strength);
+		stats.push_back(dexterity);
+		stats.push_back(constitution);
+		stats.push_back(intelligence);
+		stats.push_back(wisdom);
+		stats.push_back(charisma);
+
+		vector<int> rolls;
+		rolls.push_back(stat1);
+		rolls.push_back(stat2);
+		rolls.push_back(stat3);
+		rolls.push_back(stat4);
+		rolls.push_back(stat5);
+		rolls.push_back(stat6);
+
+		vector<vector<int> > allocation_vector (vector<int> stats, vector<int> rolls);
+
 		cout << "\n"
-			 << "Here are all of the rolls made: ";
+		     << "Here are all of the rolls made: ";
 
-		for (int i = 0; i < arr.size(); i++)
-		{
-			cout << arr.at(i) << " ";
-		}
+		for(int i = 0; i < allocation_vector.size(); i++)
 
-		cout << "\nHow would you like to allocate them?\n";
+			cout << "\nHow would you like to allocate them?\n";
 
 		return EXIT_SUCCESS;
 	}
