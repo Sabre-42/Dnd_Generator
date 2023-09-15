@@ -379,17 +379,11 @@ public:
 
 	int allocation(int stat1, int stat2, int stat3, int stat4, int stat5, int stat6)
 	{
-		int strength, dexterity, constitution, intelligence, wisdom, charisma;
-
-		vector<int> stats;
-		stats.push_back(strength);
-		stats.push_back(dexterity);
-		stats.push_back(constitution);
-		stats.push_back(intelligence);
-		stats.push_back(wisdom);
-		stats.push_back(charisma);
-
+		int n;
 		vector<int> rolls;
+		map<string, int> allocate;
+		// allocate.insert({{string}, roll})
+
 		rolls.push_back(stat1);
 		rolls.push_back(stat2);
 		rolls.push_back(stat3);
@@ -397,14 +391,75 @@ public:
 		rolls.push_back(stat5);
 		rolls.push_back(stat6);
 
-		vector<vector<int> > allocation_vector (vector<int> stats, vector<int> rolls);
+		//rolls = {stat1, stat2, stat3, stat4, stat5, stat6}
 
-		cout << "\n"
-		     << "Here are all of the rolls made: ";
+		cout << "Here are the rolls made: ";
 
-		for(int i = 0; i < allocation_vector.size(); i++)
+		for (int j = 0; j < rolls.size(); j++)
+		{
+			cout << rolls.at(j) << " ";
+		}
 
-			cout << "\nHow would you like to allocate them?\n";
+		cout << "\n" << "How would you like to allocate them?";
+	
+		cout << "\nEnter the value desired for Strength: ";
+		cin >> n;
+
+		if ((n == stat1) || (n == stat2) || (n == stat3) || (n == stat4) || (n == stat5) || (n == stat6))
+		{
+			allocate.insert({ { "Strength = " }, n });
+			rolls.erase(remove(rolls.begin(), rolls.end(), n));
+		}
+
+		cout << "Enter the value desired for Dexterity: ";
+		cin >> n;
+		if ((n == stat1) || (n == stat2) || (n == stat3) || (n == stat4) || (n == stat5) || (n == stat6))
+		{
+			allocate.insert({ { "Dexterity = " }, n });
+			rolls.erase(remove(rolls.begin(), rolls.end(), n));
+		}
+
+		cout << "Enter the value desired for Constitution: ";
+		cin >> n;
+		if ((n == stat1) || (n == stat2) || (n == stat3) || (n == stat4) || (n == stat5) || (n == stat6))
+		{
+			allocate.insert({ { "Consitution = " }, n });
+			rolls.erase(remove(rolls.begin(), rolls.end(), n));
+		}
+
+		cout << "Enter the value desired for Intelligence: ";
+		cin >> n;
+		if ((n == stat1) || (n == stat2) || (n == stat3) || (n == stat4) || (n == stat5) || (n == stat6))
+		{
+			allocate.insert({ { "Intelligence = " }, n });
+			rolls.erase(remove(rolls.begin(), rolls.end(), n));
+		}
+	
+		cout << "Enter the value desired for Wisdom: ";
+		cin >> n;
+		if ((n == stat1) || (n == stat2) || (n == stat3) || (n == stat4) || (n == stat5) || (n == stat6))
+		{
+			allocate.insert({ { "Wisdom = " }, n });
+			rolls.erase(remove(rolls.begin(), rolls.end(), n));
+		}
+
+		cout << "Enter the value desired for Charisma: ";
+		cin >> n;
+		if ((n == stat1) || (n == stat2) || (n == stat3) || (n == stat4) || (n == stat5) || (n == stat6))
+		{
+			allocate.insert({ { "Charisma = " }, n });
+			rolls.erase(remove(rolls.begin(), rolls.end(), n));
+		}
+
+		cout << "\n\n\n";
+
+		cout << "Here are your final stats!" << endl;
+		map<string, int>::iterator it = allocate.begin();
+		while (it != allocate.end())
+		{
+			cout << it->first << " " << it->second << endl;
+			it++;
+		}
 
 		return EXIT_SUCCESS;
 	}
