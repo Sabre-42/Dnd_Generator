@@ -125,17 +125,16 @@ public:
 
 	int method1() // 4d6 - Drop lowest
 	{
-		char filename[MAX_PATH];
+		/*char filename[MAX_PATH];
 
 		GetModuleFileNameA(nullptr, filename, sizeof(filename));
 
 		string filepath;
 
 		filepath = filename;
-		filepath = filepath.erase(filepath.find_last_of('\\'));
+		filepath = filepath.erase(filepath.find_last_of('\\'));*/
 
-		ofstream datafile;
-		datafile.open(filepath + "/output.txt", ios::out);
+		ofstream datafile (/*filepath*/ "output.txt");
 
 		for (int i = 0; i < 3; i++)
 		{
@@ -187,7 +186,7 @@ public:
 
 				cout << "Final Stat: " << stat << endl;
 				datafile << "Final Stat: " << stat << endl;
-
+				datafile.close();
 			}
 			else
 			{
@@ -210,7 +209,7 @@ public:
 			totalRoll.erase(totalRoll.begin(), totalRoll.end());
 		}
 
-		datafile.close();
+		
 
 		return stat;
 	}
